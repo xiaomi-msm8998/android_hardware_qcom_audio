@@ -27,7 +27,16 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+service vendor.audioadsprpcd /vendor/bin/audioadsprpcd
+    class main
+    user media
+    group media
+
 service vendor.audioadsprpcd_audiopd /vendor/bin/audioadsprpcd audiopd
-   class main
-   user media
-   group media
+    class main
+    user media
+    group media
+    disabled
+
+on property:ro.board.platform=sdm660
+    enable vendor.audioadsprpcd_audiopd
